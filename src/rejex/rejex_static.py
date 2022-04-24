@@ -47,12 +47,7 @@ class Static:
         """
         assert isinstance(alts, list), "alts must be a list."
         try:
-            new_alts = []
-            for i in alts:
-                if isinstance(i, str):
-                    new_alts.append(i)
-                else:
-                    new_alts.append(str(i))
+            new_alts = [i if isinstance(i, str) else str(i) for i in alts]
         except Exception:
             raise ValueError(f"All values in alts '{alts}' must be a string or should be convertable to string.")
 
