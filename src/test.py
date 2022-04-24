@@ -5,6 +5,7 @@ rejex_string = (
     Rejex()
         .n_number_times(2, Rejex()
             .literal("l")
+            .literal("k")
             .any_char_except_newline()
             .alternative([5, 4])
             .compile())
@@ -13,4 +14,4 @@ rejex_string = (
 
 print(rejex_string)
 
-print(bool(rejex.match(rejex_string, "l_5l_4")))
+print(bool(rejex.match(rejex_string, "lk_5lk_4")))
