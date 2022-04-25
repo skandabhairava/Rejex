@@ -1,14 +1,20 @@
 from .rejex_static import Static
 
 class Rejex:
-    def __init__(self, start_flag:bool=False, end_flag:bool=False) -> None:
+    def __init__(self, start_flag:bool=True, end_flag:bool=False) -> None:
+        """ Initialize Rejex object.
+
+        Args:
+            start_flag (bool, optional): Matches expression only at the start. Defaults to False.
+            end_flag (bool, optional): Matches expression only at the end. Defaults to False.
+        """
         self.string:str = ""
 
         self._start_flag:bool = start_flag
         self._end_flag:bool = end_flag
 
-        if start_flag:
-            self.string += "^"
+        if not start_flag:
+            self.string += ".*"            
 
     @property
     def start_flag(self) -> bool:
@@ -45,6 +51,16 @@ class Rejex:
             Rejex: Rejex object.
         """
         self.string += Static.any_char_except_newline()
+
+        return self
+
+    def any_number(self) -> 'Rejex':
+        """ Match any number.
+
+        Returns:
+            Rejex: Rejex object.
+        """
+        self.string += Static.any_number()
 
         return self
 
@@ -111,5 +127,19 @@ class Rejex:
             Rejex: Rejex object.
         """
         self.string += Static.zero_or_one(expr)
+
+        return self
+
+    def range(self, start:str, end:str) -> 'Rejex':
+        """ Match a range of characters.
+
+        Args:
+            start (str): The start of the range.
+            end (str): The end of the range.
+
+        Returns:
+            str: Rejex string.
+        """
+        self.string += Static.range(start, end)
 
         return self

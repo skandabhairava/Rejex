@@ -28,12 +28,21 @@ class Static:
 
     @staticmethod
     def any_char_except_newline() -> str:
-        """ Any character except newline.
+        """ Any character except newline. If DOTALL flag is selected, newlines are also matched
 
         Returns:
             str: Rejex string.
         """
         return "."
+
+    @staticmethod
+    def any_number() -> str:
+        """ Any number.
+
+        Returns:
+            str: Rejex string.
+        """
+        return "\\d"
 
     @staticmethod
     def alternative(alts:list) -> str:
@@ -132,3 +141,28 @@ class Static:
                 raise ValueError(f"Expression '{expr}' must be a string or should be convertable to string.")
 
         return f"({expr})?"
+
+    @staticmethod
+    def range(start:str, end:str) -> str:
+        """ Match a range of characters.
+
+        Args:
+            start (str): The start of the range.
+            end (str): The end of the range.
+
+        Returns:
+            str: Rejex string.
+        """
+        if not isinstance(start, str):
+            try:
+                start = str(start)
+            except ValueError:
+                raise ValueError(f"Start '{start}' must be a string or should be convertable to string.")
+
+        if not isinstance(end, str):
+            try:
+                end = str(end)
+            except ValueError:
+                raise ValueError(f"End '{end}' must be a string or should be convertable to string.")
+
+        return f"[{start}-{end}]"
