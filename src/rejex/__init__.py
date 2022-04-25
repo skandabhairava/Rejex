@@ -1,12 +1,10 @@
 """Rejex is a tool used to build regex expressions for python."""
 
-from re import *
-from re import RegexFlag
 from .rejex_class import Rejex
-from .rejex_static import Static
+from .rejex_static import *
 
 def test_regex(regex_pattern:str, string:str, flag:int=0) -> bool:
-    return bool(match(regex_pattern, string, flag))
+    print(bool(match(regex_pattern, string, flag)), f"{string=}")
 
 class CommonRejex:
     phone_number: str = r"(\+(\d)+)? ?(\()?(\d){3}(\))? ?(\d){3}((-| ))?(\d){4}"

@@ -55,7 +55,7 @@ class Rejex:
         return self
 
     def any_number(self) -> 'Rejex':
-        """ Match any number.
+        """ Match any number character. Similar to '[0-9]'.
 
         Returns:
             Rejex: Rejex object.
@@ -64,16 +64,81 @@ class Rejex:
 
         return self
 
-    def alternative(self, *alts) -> 'Rejex':
-        """ If a string matches any one in the alts list then it will match.
-
-        Args:
-            alts (list): The list of alt strings/chars.
+    def any_non_number(self) -> 'Rejex':
+        """ Match any non number character. Similar to '[0-9]'.
 
         Returns:
             Rejex: Rejex object.
         """
-        self.string += Static.alternative(*alts)
+        self.string += Static.any_non_number()
+
+        return self
+
+    def any_word_character(self) -> 'Rejex':
+        """ Match any word character. Similar to '[a-zA-Z_0-9]'.
+
+        Returns:
+            Rejex: Rejex object.
+        """
+        self.string += Static.any_word_character()
+
+        return self
+
+    def any_non_word_character(self) -> 'Rejex':
+        """ Match any non word character. Similar to '[^a-zA-Z_0-9]'.
+
+        Returns:
+            Rejex: Rejex object.
+        """
+        self.string += Static.any_non_word_character()
+
+        return self
+
+    def any_whitespace_character(self) -> 'Rejex':
+        """ Match any whitespace character. Similar to '[ \\f\\n\\r\\t\\v]'.
+
+        Returns:
+            Rejex: Rejex object.
+        """
+        self.string += Static.any_whitespace_character()
+
+        return self
+
+    def any_non_whitespace_character(self) -> 'Rejex':
+        """ Match any non whitespace character. Similar to '[^ \\f\\n\\r\\t\\v]'.
+
+        Returns:
+            Rejex: Rejex object.
+        """
+        self.string += Static.any_non_whitespace_character()
+
+        return self
+
+    def alternative(self, *alts, fast=False) -> 'Rejex':
+        """ If a string matches any one in the alts list then it will match.
+
+        Args:
+            alts (list): The list of alt strings/chars.
+            fast (bool): Doesn't check alts and compiles to string using the fastest universal method(Might become unreadable). Defaults to False
+
+        Returns:
+            Rejex: Rejex object.
+        """
+        self.string += Static.alternative(*alts, fast=fast)
+
+        return self
+
+    def except_expr(self, expr:str) -> 'Rejex':
+        """ Is a NOT operation on the expression.
+        This doesn't work with "start_flag=False"
+
+        Args:
+            expr (str): The expression to be inversed
+
+        Returns:
+            Rejex: Rejex object.
+        """
+        self.string += Static.except_expr(expr)
 
         return self
 
