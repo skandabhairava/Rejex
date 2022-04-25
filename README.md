@@ -6,6 +6,16 @@ A library which can help in building regex expressions which can be used with re
 <hr>
 <br>
 
+## Install
+
+```bash
+pip install --upgrade rejex #For windows
+pip3 install --upgrade rejex #For linux
+```
+
+<hr>
+<br>
+
 ## Changelogs
 
 [Changelogs](https://github.com/skandabhairava/Rejex/blob/main/CHANGELOG.md)
