@@ -1,13 +1,20 @@
 # Rejex Changelog
 <hr>
 
-> v-beta-0.0.0.2
+> v-0.0.1
 
 ```diff
-+ Added Basic Rejex Operations
++ Publishing Rejex on Pypi
 ```
 
 <hr>
+
+> v-beta-0.0.0.2
+
+```diff
++ Added Many Basic Rejex Operations
+```
+
 <hr>
 
 > v-beta-0.0.0.1

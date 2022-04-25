@@ -17,11 +17,11 @@ class Rejex:
             self.string += ".*"
 
     @property
-    def start_flag(self) -> bool:
+    def get_start_flag(self) -> bool:
         return self._start_flag
 
     @property
-    def end_flag(self) -> bool:
+    def get_end_flag(self) -> bool:
         return self._end_flag
 
     def compile(self) -> str:

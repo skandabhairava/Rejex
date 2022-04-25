@@ -4,7 +4,8 @@ from .rejex_class import Rejex
 from .rejex_static import *
 
 def test_regex(regex_pattern:str, string:str, flag:int=0) -> bool:
-    print(bool(match(regex_pattern, string, flag)), f"{string=}")
+    matched = bool(match(regex_pattern, string, flag))
+    print(f"-------------------------------\nregex_pattern='{regex_pattern}'\nstring='{string}'\nmatch={matched}\n-------------------------------")
 
 class CommonRejex:
     phone_number: str = r"(\+(\d)+)? ?(\()?(\d){3}(\))? ?(\d){3}((-| ))?(\d){4}"
