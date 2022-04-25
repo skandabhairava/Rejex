@@ -1,5 +1,5 @@
 import rejex
-from rejex import Rejex, Static
+from rejex import Rejex, Static, CommonRejex
 
 rejex_string = (
     Rejex()
@@ -12,6 +12,6 @@ rejex_string = (
         .compile()
 )
 
-print(rejex_string)
+#print(rejex_string)
 
-print(bool(rejex.match(rejex_string, "lk_5lk_4")))
+print(rejex.test_regex(CommonRejex.short_date, "25/4-2022"))
