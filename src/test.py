@@ -29,11 +29,11 @@ rejex_test = (
         .zero_or_one(Static.literal(")"))
         .zero_or_one(Static.literal(" "))
         .n_number_times(3, Static.any_number())
-        .zero_or_one(Static.literal("-"))
+        .zero_or_one(Static.alternative([Static.literal("-"), Static.literal(" ")]))
         .n_number_times(4, Static.any_number())
     .compile()
 )
 
 print(rejex_test)
 
-print(rejex.test_regex(rejex_test, "a456 456-7890"))
+print(rejex.test_regex(rejex_test, "456 456 7890"))

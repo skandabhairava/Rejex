@@ -5,8 +5,8 @@ class Rejex:
         """ Initialize Rejex object.
 
         Args:
-            start_flag (bool, optional): Matches expression only at the start. Defaults to False.
-            end_flag (bool, optional): Matches expression only at the end. Defaults to False.
+            start_flag (bool, optional): Matches expression only at the start. Defaults to True.
+            end_flag (bool, optional): Matches expression only at the end(Doesn't work as intended). Defaults to False.
         """
         self.string:str = ""
 

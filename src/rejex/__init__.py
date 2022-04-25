@@ -9,7 +9,7 @@ def test_regex(regex_pattern:str, string:str, flag:int=0) -> bool:
     return bool(match(regex_pattern, string, flag))
 
 class CommonRejex:
-    phone_number: str = r"(\+(\d)+)?( )?(\()?(\d){3}(\))?( )?(\d){3}(-)?(\d){4}"
+    phone_number: str = r"(\+(\d)+)?( )?(\()?(\d){3}(\))?( )?(\d){3}(([- ]))?(\d){4}"
     """ 
     (
         Rejex()
@@ -27,7 +27,7 @@ class CommonRejex:
             .zero_or_one(Static.literal(")"))
             .zero_or_one(Static.literal(" "))
             .n_number_times(3, Static.any_number())
-            .zero_or_one(Static.literal("-"))
+            .zero_or_one(Static.alternative([Static.literal("-"), Static.literal(" ")]))
             .n_number_times(4, Static.any_number())
         .compile()
     ) 
@@ -36,6 +36,7 @@ class CommonRejex:
     +911234567890
     (123) 123-4567
     456 456-7890
+    456 456 7890
     ...
     """
 
