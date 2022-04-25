@@ -15,25 +15,19 @@ rejex_string = (
 
 rejex_test = (
     Rejex()
+        .zero_or_one(Static.any_number())
+        .any_number()
+        .alternative(Static.literal("/"), Static.literal("-"))
+        .zero_or_one(Static.any_number())
+        .any_number()
+        .alternative(Static.literal("/"), Static.literal("-"))
         .zero_or_one(
-            Rejex()
-                .literal("+")
-                .one_or_more(
-                    Static.any_number()
-                )
-                .compile()
+            Static.n_number_times(2, Static.any_number())
         )
-        .zero_or_one(Static.literal(" "))
-        .zero_or_one(Static.literal("("))
-        .n_number_times(3, Static.any_number())
-        .zero_or_one(Static.literal(")"))
-        .zero_or_one(Static.literal(" "))
-        .n_number_times(3, Static.any_number())
-        .zero_or_one(Static.alternative([Static.literal("-"), Static.literal(" ")]))
-        .n_number_times(4, Static.any_number())
+        .n_number_times(2, Static.any_number())
     .compile()
 )
 
 print(rejex_test)
 
-print(rejex.test_regex(rejex_test, "456 456 7890"))
+print(rejex.test_regex(rejex_test, "25/12/2019"))

@@ -45,7 +45,7 @@ class Static:
         return "\\d"
 
     @staticmethod
-    def alternative(alts:list) -> str:
+    def alternative(*alts) -> str:
         """ If a string matches any one in the alts list then it will match.
 
         Args:
@@ -54,7 +54,7 @@ class Static:
         Returns:
             str: Rejex string.
         """
-        assert isinstance(alts, list), "alts must be a list."
+        alts = [*alts]
         try:
             new_alts = [i if isinstance(i, str) else str(i) for i in alts]
         except Exception:

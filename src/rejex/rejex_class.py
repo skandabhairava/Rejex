@@ -14,7 +14,7 @@ class Rejex:
         self._end_flag:bool = end_flag
 
         if not start_flag:
-            self.string += ".*"            
+            self.string += ".*"
 
     @property
     def start_flag(self) -> bool:
@@ -64,7 +64,7 @@ class Rejex:
 
         return self
 
-    def alternative(self, alts:list) -> 'Rejex':
+    def alternative(self, *alts) -> 'Rejex':
         """ If a string matches any one in the alts list then it will match.
 
         Args:
@@ -73,7 +73,7 @@ class Rejex:
         Returns:
             Rejex: Rejex object.
         """
-        self.string += Static.alternative(alts)
+        self.string += Static.alternative(*alts)
 
         return self
 

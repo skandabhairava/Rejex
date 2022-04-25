@@ -27,18 +27,28 @@ class CommonRejex:
             .zero_or_one(Static.literal(")"))
             .zero_or_one(Static.literal(" "))
             .n_number_times(3, Static.any_number())
-            .zero_or_one(Static.alternative([Static.literal("-"), Static.literal(" ")]))
+            .zero_or_one(Static.alternative(Static.literal("-"), Static.literal(" ")))
             .n_number_times(4, Static.any_number())
         .compile()
-    ) 
-    
-    +1 (555) 555-1234
-    +911234567890
-    (123) 123-4567
-    456 456-7890
-    456 456 7890
+    )
     ...
     """
 
-    short_date:str = r"\d?\d(/|-)\d?\d(/|-)(\d\d)?\d\d"
+    short_date:str = r"(\d)?\d([/-])(\d)?\d([/-])((\d){2})?(\d){2}"
+    """
+    (
+        Rejex()
+            .zero_or_one(Static.any_number())
+            .any_number()
+            .alternative(Static.literal("/"), Static.literal("-"))
+            .zero_or_one(Static.any_number())
+            .any_number()
+            .alternative(Static.literal("/"), Static.literal("-"))
+            .zero_or_one(
+                Static.n_number_times(2, Static.any_number())
+            )
+            .n_number_times(2, Static.any_number())
+        .compile()
+    )"""
+
     basic_time:str = r"[0-9]?[0-9]:[0-9][0-9](:[0-9][0-9])?"
