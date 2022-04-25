@@ -9,7 +9,7 @@ def test_regex(regex_pattern:str, string:str, flag:int=0) -> bool:
     return bool(match(regex_pattern, string, flag))
 
 class CommonRejex:
-    phone_number: str = r"(\+(\d)+)?( )?(\()?(\d){3}(\))?( )?(\d){3}(([- ]))?(\d){4}"
+    phone_number: str = r"(\+(\d)+)? ?(\()?(\d){3}(\))? ?(\d){3}((-| ))?(\d){4}"
     """ 
     (
         Rejex()
@@ -34,7 +34,7 @@ class CommonRejex:
     ...
     """
 
-    short_date:str = r"(\d)?\d([/-])(\d)?\d([/-])((\d){2})?(\d){2}"
+    short_date:str = r"(\d)?\d(/|-)(\d)?\d(/|-)((\d){2})?(\d){2}"
     """
     (
         Rejex()

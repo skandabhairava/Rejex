@@ -60,9 +60,9 @@ class Static:
         except Exception:
             raise ValueError(f"All values in alts '{alts}' must be a string or should be convertable to string.")
 
-        if all(len(i)==1 for i in new_alts):
+        if all(len(i)==1 and i != "-" for i in new_alts):
             #if all of them are single chars, use [abc] notation
-            return f"([{''.join(new_alts)}])"
+            return f"[{''.join(new_alts)}]"
         else:
             #if any of them are more than one char, use a|b|c notation
             return f"({'|'.join(new_alts)})"
@@ -86,6 +86,8 @@ class Static:
             except ValueError:
                 raise ValueError(f"Expression '{expr}' must be a string or should be convertable to string.")
 
+        if len(expr) == 1:
+            return f"{expr}{{{n}}}"
         return f"({expr}){{{n}}}"
 
     @staticmethod
@@ -104,6 +106,8 @@ class Static:
             except ValueError:
                 raise ValueError(f"Expression '{expr}' must be a string or should be convertable to string.")
 
+        if len(expr) == 1:
+            return f"{expr}*"
         return f"({expr})*"
 
     @staticmethod
@@ -122,6 +126,8 @@ class Static:
             except ValueError:
                 raise ValueError(f"Expression '{expr}' must be a string or should be convertable to string.")
 
+        if len(expr) == 1:
+            return f"{expr}+"
         return f"({expr})+"
 
     @staticmethod
@@ -140,6 +146,8 @@ class Static:
             except ValueError:
                 raise ValueError(f"Expression '{expr}' must be a string or should be convertable to string.")
 
+        if len(expr) == 1:
+            return f"{expr}?"
         return f"({expr})?"
 
     @staticmethod
