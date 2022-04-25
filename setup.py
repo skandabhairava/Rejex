@@ -5,16 +5,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="rejex",
-    version="0.0.1",
+    version="0.0.1.1",
     author="Terroid",
     author_email="skandabhairava@gmail.com",
     description="Tool used to build regex expressions for python",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/skandabhairava/Rejex",
-    entry_points={
-        "console_scripts": ["pie=pie_manager.cli:entry_point"],
-    },
     project_urls={
         "Bug Tracker": "https://github.com/skandabhairava/Rejex/issues",
     },
