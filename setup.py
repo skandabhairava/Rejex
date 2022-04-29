@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="rejex",
-    version="0.0.1.1",
+    version="0.0.1",
     author="Terroid",
     author_email="skandabhairava@gmail.com",
     description="Tool used to build regex expressions for python",
